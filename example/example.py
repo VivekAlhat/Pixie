@@ -39,6 +39,7 @@ def generate_answer(prompt):
 
 with open("example/spacebattle.txt") as f:
     content = f.read()
+    # ingesting the data into vector store
     ingested = pixie.from_docs(docs=content.split("\n\n"))
     print(ingested)
 
@@ -64,6 +65,7 @@ while True:
     if query == "/bye":
         quit()
 
+    # search similar matches for query in the embedding store
     similarities = pixie.similarity_search(query, top_k=5)
     print(f"query: {query}, top {len(similarities)} matched results:\n")
 
