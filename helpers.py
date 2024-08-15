@@ -6,7 +6,7 @@ def cosine_similarity(store_embeddings, query_embedding, top_k):
     magnitude_a = np.linalg.norm(store_embeddings, axis=1)
     magnitude_b = np.linalg.norm(query_embedding)
 
-    similarity = dot_product / magnitude_a * magnitude_b
+    similarity = dot_product / (magnitude_a * magnitude_b)
 
     sim = np.argsort(similarity)
     top_k_indices = sim[::-1][:top_k]
